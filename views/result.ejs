@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather for <%= weather.city %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="result-container">
+    <div class="weather-card">
+      <div class="weather-header">
+        <h1><%= weather.city %></h1>
+        <div class="weather-icon">
+          <img src="<%= weather.icon %>" alt="Weather icon">
+        </div>
+        <div class="temperature"><%= weather.temp %>°C</div>
+        <div class="description"><%= weather.description %></div>
+      </div>
+
+      <div class="weather-advice">
+        <% if (weather.description.includes('rain') || weather.description.includes('drizzle')) { %>
+          <div class="advice-card rain">
+            <h3>🌧️ Rainy Day Advice</h3>
+            <p>Don't forget your umbrella! Wear waterproof shoes and a raincoat.</p>
+          </div>
+        <% } else if (weather.description.includes('sun') || weather.description.includes('clear')) { %>
+          <div class="advice-card sun">
+            <h3>☀️ Sunny Day Advice</h3>
+            <p>Apply SPF 30+ sunscreen! Wear sunglasses and stay hydrated.</p>
+          </div>
+        <% } else if (weather.description.includes('cloud')) { %>
+          <div class="advice-card cloud">
+            <h3>⛅ Cloudy Day Advice</h3>
+            <p>Perfect for outdoor activities! Carry a light jacket just in case.</p>
+          </div>
+        <% } else if (weather.description.includes('snow')) { %>
+          <div class="advice-card snow">
+            <h3>❄️ Snowy Day Advice</h3>
+            <p>Wear thermal layers! Watch for icy patches on roads.</p>
+          </div>
+        <% } else { %>
+          <div class="advice-card default">
+            <h3>🌈 Weather Tip</h3>
+            <p>Check again later for updates! Weather can change quickly.</p>
+          </div>
+        <% } %>
+      </div>
+
+      <div class="extra-info">
+        <div class="info-card">
+          <h4>🧥 What to Wear</h4>
+          <p><%= getClothingAdvice(weather.temp) %></p>
+        </div>
+        <div class="info-card">
+          <h4>⏱️ Best Time</h4>
+          <p><%= getTimeAdvice(weather.description) %></p>
+        </div>
+      </div>
+
+      <a href="/" class="home-link">Search Another City</a>
+    </div>
+  </div>
+</body>
+</html>
