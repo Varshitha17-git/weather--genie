@@ -74,6 +74,10 @@
    http://localhost:3000
    ```
 
+📸 Screenshots
+
+ For pictures of the homepage and resultpage check out assets folder.
+
  📜 License
 
 This project is open-source and available under the **MIT License**.
